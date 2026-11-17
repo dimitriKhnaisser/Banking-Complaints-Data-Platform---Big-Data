@@ -1,0 +1,44 @@
+services:
+  # rustfs:
+  #   image: rustfs/rustfs:latest
+  #   ports:
+  #     - "9000:9000"   # S3 API (used by code)
+  #     - "9001:9001"   # Web console (used by you in the browser)
+  #   environment:
+  #     RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY}
+  #     RUSTFS_SECRET_KEY: ${RUSTFS_SECRET_KEY}
+  #     RUSTFS_VOLUMES: /data
+  #     RUSTFS_ADDRESS: ":9000"
+  #     RUSTFS_CONSOLE_ADDRESS: ":9001"
+  #     RUSTFS_CONSOLE_ENABLE: "true"
+  #   volumes:
+  #     - rustfs_data:/data
+  minio:
+    image: pgsty/silo:RELEASE.2026-10-26T00-00-00Z
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"   # S3 API (used by code)
+      - "9001:9001"   # Web console (used by you in the browser)
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - minio_data:/data
+  mongodb:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  #rustfs_data:
+  minio_data:
+  mongo_data:
+
+
+
+  
