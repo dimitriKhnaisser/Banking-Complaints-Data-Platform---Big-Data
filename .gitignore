@@ -1,6 +1,11 @@
 .env
+.env.*
+!.env.example
 data/
 *.zip
 *.csv
 __pycache__/
 .venv/
+.pytest_cache/
+*.py[cod]
+*.part

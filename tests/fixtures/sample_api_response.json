@@ -1,0 +1,24 @@
+{
+  "hits": {
+    "total": {
+      "value": 1
+    },
+    "hits": [
+      {
+        "_source": {
+          "complaint_id": 9000000001,
+          "date_received": "2026-11-20",
+          "product": "Student loan",
+          "sub_product": "Federal student loan servicing",
+          "issue": "Dealing with your lender or servicer",
+          "company": "Example Servicer",
+          "state": "CA",
+          "submitted_via": "Web"
+        }
+      }
+    ]
+  },
+  "_meta": {
+    "break_points": {}
+  }
+}
